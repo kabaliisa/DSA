@@ -1,6 +1,5 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +12,31 @@ public class Main {
         s[0]='t';
         System.out.println(new String(s));
         System.out.println(restoreString("codeleet", new int[]{4,5,6,7,0,2,1,3}));
+
+//        StringBuilder sb = new StringBuilder();
+//        String d = "Solomon";
+//        for(int  i =d.length()-1; i >= 0; i--){
+//            sb.append(d.charAt(i));
+//        }
+//        System.out.println("d---"+sb.toString());
+
+
+        List<Integer> nums = Arrays.asList(2,5,10,100,50);
+        int max = nums.get(0);
+        for(int i = 1; i < nums.size(); i++ ){
+            //0,2: 2,5:, 5,10: 10,100: 100, 50
+            max = Integer.max(max, nums.get(i));
+        }
+        Integer max1 = nums.stream().max(Integer::compareTo).orElse(null);
+
+        System.out.println(max1);
+
+        String name = "Solomon";
+        System.out.println(Optional.ofNullable(name).orElse("name is Empty"));
+
+        IntSummaryStatistics summary = nums.stream().mapToInt(Integer::intValue).summaryStatistics();
+        System.out.println(summary.getMax());
+
     }
 
     public static String interpret(String command) {
