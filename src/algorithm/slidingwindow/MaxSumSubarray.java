@@ -5,14 +5,29 @@ public class MaxSumSubarray {
         System.out.println(findMaxSumSubArray(new int[]{4,2,1,7,8,1,2,6,1,0}, 3));
     }
 
+//    public static int findMaxSumSubArray(int[] arr, int k){
+//        int sum = 0;
+//        int maxValue = Integer.MIN_VALUE;
+//        for(int i = 0; i < arr.length; i++){
+//            sum += arr[i];
+//            if(i >= k-1){
+//                maxValue = Math.max(maxValue, sum);
+//                sum = sum - arr[i - (k-1)];
+//            }
+//        }
+//        return maxValue;
+//    }
+
     public static int findMaxSumSubArray(int[] arr, int k){
+        int l =0;
         int sum = 0;
         int maxValue = Integer.MIN_VALUE;
-        for(int i = 0; i < arr.length; i++){
-            sum += arr[i];
-            if(i >= k-1){
+        for(int r = 0; r < arr.length; r++){
+            sum += arr[r];
+            if(r >= k-1){
                 maxValue = Math.max(maxValue, sum);
-                sum = sum - arr[i - (k-1)];
+                sum = sum - arr[l];
+                l += 1;
             }
         }
         return maxValue;
